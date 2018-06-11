@@ -1,0 +1,9 @@
+<mat-card class="standard-margin">
+    <mat-card-title>To Do List</mat-card-title>
+
+    <mat-selection-list #list>
+      <mat-list-option *ngFor="let todo of todos">
+        {{todo.description}}
+      </mat-list-option>
+    </mat-selection-list>
+</mat-card>
