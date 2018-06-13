@@ -1,9 +1,9 @@
 <div *ngIf="addTodo">
-<mat-card class="standard-margin">
+  <mat-card class="standard-margin">
 
 
 
-    <div class="example-container">      
+    <div class="example-container">
       <mat-form-field>
         <textarea matInput placeholder="Title" #titleInput></textarea>
       </mat-form-field>
@@ -11,4 +11,4 @@
       <button mat-button (click)="onClick(titleInput.value)">Submit</button>
     </div>
   </mat-card>
-  </div>
+</div>

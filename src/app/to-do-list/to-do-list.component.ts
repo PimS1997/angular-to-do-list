@@ -25,12 +25,6 @@ export class ToDoListComponent implements OnInit {
   }
 
   onAdd(): void{
-    console.log("Hello");
     this.addTodo = true;
   }
-
-  onSelect(todo: ToDo): void{
-    
-  }
-
 }
