@@ -1,9 +1,12 @@
 <mat-card class="standard-margin">
+  
     <mat-card-title>To Do List</mat-card-title>
-
-    <mat-selection-list #list>
+    <button mat-icon-button class="button-align" (click)="onAdd()"><mat-icon>add</mat-icon></button>
+    <mat-selection-list  color="primary" #list>
       <mat-list-option *ngFor="let todo of todos">
-        {{todo.description}}
+        {{todo.title}} <mat-icon matListIcon>delete</mat-icon>
       </mat-list-option>
+      
     </mat-selection-list>
 </mat-card>
+<app-to-do-list-detail [addTodo]="addTodo"></app-to-do-list-detail>

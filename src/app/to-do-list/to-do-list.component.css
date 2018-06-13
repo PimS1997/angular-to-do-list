@@ -1,3 +1,7 @@
-.mat-pseudo-checkbox{
-    background-color: black !important;
+mat-checkbox{
+    color: primary;
+}
+
+.button-align{
+    align-content: center;
 }

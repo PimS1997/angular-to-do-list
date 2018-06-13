@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TODOS } from '../mock-to-dos';
+import { TodoService } from '../todo.service';
 import { ToDo } from '../to-do';
 
 @Component({
@@ -8,14 +8,29 @@ import { ToDo } from '../to-do';
   styleUrls: ['./to-do-list.component.css']
 })
 export class ToDoListComponent implements OnInit {
+  selectedToDo: ToDo;
+  addTodo: boolean = false;
 
-  todos: ToDo[] = TODOS;
-  test: any[] = [1,2,3];
+  todos: ToDo[];
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
     // console.log(this.todos);
+    this.getTodos();
+  }
+
+  getTodos(): void{
+    this.todos = this.todoService.getTodos();
+  }
+
+  onAdd(): void{
+    console.log("Hello");
+    this.addTodo = true;
+  }
+
+  onSelect(todo: ToDo): void{
+    
   }
 
 }
