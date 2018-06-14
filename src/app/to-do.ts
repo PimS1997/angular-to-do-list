@@ -1,4 +1,4 @@
-export class ToDo{
-    id: number;
+export interface ToDo{
     title: string;
+    completed: boolean;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToDo } from './to-do';
-import { TODOS } from './mock-to-dos';
+import { Subject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,9 +8,18 @@ import { TODOS } from './mock-to-dos';
 })
 export class TodoService {
 
-  constructor() { }
+  // private todosSubject: Subject<ToDo[]> = new Subject();
+ 
 
-  getTodos(): ToDo[]{
-    return TODOS
-  }
+  // constructor() {
+  //   this.todosSubject.next([...this.todos]); 
+  //  }
+
+  // getTodos(): Observable<ToDo[]>{
+  //   return this.todosSubject.asObservable();
+  // }
+
+  // addTodo(todo: ToDo): void{
+  //   this.todosSubject.next([...this.todos, todo]);
+  // }
 }

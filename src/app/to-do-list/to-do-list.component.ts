@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { ToDo } from '../to-do';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-to-do-list',
@@ -11,20 +13,17 @@ export class ToDoListComponent implements OnInit {
   selectedToDo: ToDo;
   addTodo: boolean = false;
 
-  todos: ToDo[];
+  todos: Observable<ToDo[]>;
 
-  constructor(private todoService: TodoService) { }
+  @ViewChild('list') listRef;
+
+  constructor(private todoService: TodoService, private db: AngularFirestore) { }
 
   ngOnInit() {
-    // console.log(this.todos);
-    this.getTodos();
+    this.todos = this.db.collection<ToDo>('todos').valueChanges();
   }
 
-  getTodos(): void{
-    this.todos = this.todoService.getTodos();
-  }
-
-  onAdd(): void{
+  onAdd(): void {
     this.addTodo = true;
   }
 }
