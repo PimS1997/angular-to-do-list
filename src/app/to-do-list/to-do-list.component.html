@@ -1,13 +1,19 @@
 <mat-card class="standard-margin">
   
     <mat-card-title>To Do List</mat-card-title>
-    <button mat-icon-button class="button-align" (click)="onAdd()"><mat-icon>add</mat-icon></button>
+    <button mat-icon-button class="button-align" (click)="onAdd()">
+      <mat-icon>add</mat-icon>
+    </button>
     <mat-selection-list  color="primary" #list>
-      <mat-list-option *ngFor="let todo of todos | async" #listItem>
-          {{todo.title}} 
-        <mat-icon matListIcon>delete</mat-icon>
+      <mat-list-option *ngFor="let todo of todos | async" (click)="onSelect(listItem, todo)" #listItem>
+
+          <span [ngStyle]="{ 'text-decoration': (todo.completed === true) ? 'line-through' : '' }"> {{todo.title}}</span>
+
+          <button mat-icon-button class="button-align" (click)="onDelete(todo)">
+            <mat-icon>delete</mat-icon>
+          </button>
       </mat-list-option>
       
     </mat-selection-list>
 </mat-card>
-<app-to-do-list-detail [addTodo]="addTodo"></app-to-do-list-detail>
+<app-to-do-add [addTodo]="addTodo"></app-to-do-add>

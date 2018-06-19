@@ -3,9 +3,9 @@ import { ToDo } from '../to-do';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
-  selector: 'app-to-do-list-detail',
-  templateUrl: './to-do-list-detail.component.html',
-  styleUrls: ['./to-do-list-detail.component.css']
+  selector: 'app-to-do-add',
+  templateUrl: './to-do-add.component.html',
+  styleUrls: ['./to-do-add.component.css']
 })
 export class ToDoListDetailComponent implements OnInit {
   

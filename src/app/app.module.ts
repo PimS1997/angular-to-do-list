@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { ToDoNavComponent } from './to-do-nav/to-do-nav.component';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
-import { ToDoListDetailComponent } from './to-do-list-detail/to-do-list-detail.component';
+import { ToDoListDetailComponent } from './to-do-add/to-do-add.component';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
