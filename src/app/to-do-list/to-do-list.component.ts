@@ -52,19 +52,19 @@ export class ToDoListComponent implements OnInit {
     }
   }
 
-  changeFilter(value: string): void{
-    switch(value){
-      case "unfinished":
-        console.log("works");
-        this.todos = this.todos.pipe(map(items => items.filter(todo => todo.completed === false)));
-        break;
-      case "finished":
-        this.todos = this.todos.pipe(map(items => items.filter(todo => todo.completed === true)));
-        break;
-      case "all":
-        this.ngOnInit();
-        break;
-    }
+  // changeFilter(value: string): void{
+  //   switch(value){
+  //     case "unfinished":
+  //       console.log("works");
+  //       this.todos = this.todos.pipe(map(items => items.filter(todo => todo.completed === false)));
+  //       break;
+  //     case "finished":
+  //       this.todos = this.todos.pipe(map(items => items.filter(todo => todo.completed === true)));
+  //       break;
+  //     case "all":
+  //       this.ngOnInit();
+  //       break;
+  //   }
 
-  }
+  // }
 }
