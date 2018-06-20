@@ -17,9 +17,7 @@ export class ToDoListDetailComponent implements OnInit {
   }
 
   onClick(title: string): void{
-    let todo = {title: title, completed: false};
-    this.db.collection('todos').add(todo);
-    console.log(title);
+
   }
 
 }

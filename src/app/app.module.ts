@@ -9,7 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { ToDoNavComponent } from './to-do-nav/to-do-nav.component';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { ToDoListDetailComponent } from './to-do-add/to-do-add.component';
 import { environment } from '../environments/environment';
@@ -36,6 +36,8 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,
+    MatOptionModule,
+    MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,

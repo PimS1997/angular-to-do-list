@@ -1,11 +1,21 @@
 <mat-card class="standard-margin">
   
     <mat-card-title>To Do List</mat-card-title>
-    <button mat-icon-button class="button-align" (click)="onAdd()">
-      <mat-icon>add</mat-icon>
-    </button>
-    <mat-selection-list  color="primary" #list>
-      <mat-list-option *ngFor="let todo of todos | async" (click)="onSelect(listItem, todo)" #listItem>
+    <mat-form-field>
+      <input matInput placeholder="Title" (keydown)="onKeyDown($event, titleInput.value)" #titleInput>
+    </mat-form-field>
+    <br />
+    <!-- Placeholder for filter -->
+    <mat-form-field>
+      <mat-select placeholder="Show/Hide Todos" [(ngModel)]="selectedValue" (ngModelChange)="changeFilter(selectedValue)" #todoFilter>
+        <mat-option value="unfinished">Show Incompleted</mat-option>
+        <mat-option value="finished">Show Finished</mat-option>
+        <mat-option value="all">Show All</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-selection-list color="primary" #list>
+      <mat-list-option [ngClass]="" checkboxPosition="before" *ngFor="let todo of todos | async" (click)="onSelect(listItem, todo)" #listItem>
 
           <span [ngStyle]="{ 'text-decoration': (todo.completed === true) ? 'line-through' : '' }"> {{todo.title}}</span>
 
@@ -16,4 +26,3 @@
       
     </mat-selection-list>
 </mat-card>
-<app-to-do-add [addTodo]="addTodo"></app-to-do-add>

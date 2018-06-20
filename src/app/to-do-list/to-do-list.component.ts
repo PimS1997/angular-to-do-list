@@ -17,6 +17,8 @@ export class ToDoListComponent implements OnInit {
   todos: Observable<ToDo[]>;
   documentChanges: Observable<DocumentChangeAction<ToDo>[]>;
 
+  selectedValue: string;
+
   @ViewChild('list') listRef;
 
   constructor(private todoService: TodoService, private db: AngularFirestore) { }
@@ -31,24 +33,38 @@ export class ToDoListComponent implements OnInit {
           };
         });
       }));
-    
   }
 
   onSelect(listReference, todo: ToDo):void {
-    if(listReference.selected){
-      todo.completed = true;
-    }
-    else{
-      todo.completed = false;
-    }
+    todo.completed = listReference.selected;
     this.db.collection<ToDo>('todos').doc(todo.id).update({completed: todo.completed});
-  }
-
-  onAdd(): void {
-    this.addTodo = true;
   }
 
   onDelete(todo): void {
     this.db.collection<ToDo>('todos').doc(todo.id).delete();
+  }
+
+  //Adds a todo when pressing enter in the form
+  onKeyDown(event, value: string):void{
+    if (event.key === "Enter") {
+      let todo = {title: value, completed: false};
+      this.db.collection('todos').add(todo);
+    }
+  }
+
+  changeFilter(value: string): void{
+    switch(value){
+      case "unfinished":
+        console.log("works");
+        this.todos = this.todos.pipe(map(items => items.filter(todo => todo.completed === false)));
+        break;
+      case "finished":
+        this.todos = this.todos.pipe(map(items => items.filter(todo => todo.completed === true)));
+        break;
+      case "all":
+        this.ngOnInit();
+        break;
+    }
+
   }
 }
